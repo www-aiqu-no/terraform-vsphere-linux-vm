@@ -45,24 +45,24 @@ resource "vsphere_virtual_machine" "vm" {
   }
 # ------------------------------------------------------------------------------
   clone {
-    linked_clone  = false
     template_uuid = "${data.vsphere_virtual_machine.template.id}"
+    linked_clone  = false
     customize {
       timeout      = -1
-      ipv4_gateway = "${var.ipv4_gateway}"
-      network_interface {
-        dns_domain      = "${var.dns_domain}"
-        dns_server_list = "${var.dns_servers}"
-        ipv4_address    = "${cidrhost(var.ipv4_network,var.ipv4_address_start + count.index)}"
-        ipv4_netmask    = "${element(split("/",var.ipv4_network),1)}"
-      }
       linux_options {
         host_name = "${var.name}${count.index}"
         domain    = "${var.dns_domain}"
       }
+      network_interface {
+        ipv4_address    = "${cidrhost(var.ipv4_network,var.ipv4_address_start + count.index)}"
+        ipv4_netmask    = "${element(split("/",var.ipv4_network),1)}"
+      }
+      ipv4_gateway = "${var.ipv4_gateway}"
+      dns_domain      = "${var.dns_domain}"
+      dns_server_list = "${var.dns_servers}"
     }
   }
 # ------------------------------------------------------------------------------
-  custom_attributes = "${var.vsphere_custom_attributes}"
+#  custom_attributes = "${var.vsphere_custom_attributes}"
 # ------------------------------------------------------------------------------
 }

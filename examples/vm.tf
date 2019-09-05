@@ -1,6 +1,6 @@
 module "windows_vm" {
-  source  = "www-aiqu-no/windows-vm/vsphere"
-  version = "0.0.2"
+  source  = "www-aiqu-no/linux-vm/vsphere"
+  version = "0.0.1"
 # ------------------------------------------------------------------------------
   hosts  = ["my-vsphere-host"]
 # ------------------------------------------------------------------------------
