@@ -56,10 +56,10 @@ resource "vsphere_virtual_machine" "vm" {
       network_interface {
         ipv4_address    = "${cidrhost(var.ipv4_network,var.ipv4_address_start + count.index)}"
         ipv4_netmask    = "${element(split("/",var.ipv4_network),1)}"
+        dns_domain      = "${var.dns_domain}"
+        dns_server_list = "${var.dns_servers}"
       }
       ipv4_gateway = "${var.ipv4_gateway}"
-      dns_domain      = "${var.dns_domain}"
-      dns_server_list = "${var.dns_servers}"
     }
   }
 # ------------------------------------------------------------------------------
