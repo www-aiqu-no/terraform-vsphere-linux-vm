@@ -63,6 +63,6 @@ resource "vsphere_virtual_machine" "vm" {
     }
   }
 # ------------------------------------------------------------------------------
-#  custom_attributes = "${var.vsphere_custom_attributes}"
+  custom_attributes = "${var.vsphere_custom_attributes}"
 # ------------------------------------------------------------------------------
 }
