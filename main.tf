@@ -46,7 +46,7 @@ resource "vsphere_virtual_machine" "vm" {
     customize {
       timeout      = -1
       linux_options {
-        host_name = join("",[var.name,count.index]
+        host_name = join("",[var.name,count.index])
         domain    = var.dns_domain
       }
       network_interface {
