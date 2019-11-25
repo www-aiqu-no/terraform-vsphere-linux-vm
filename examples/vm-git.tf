@@ -1,6 +1,5 @@
 module "linux_vm" {
-  source  = "www-aiqu-no/linux-vm/vsphere"
-  version = "0.0.3"
+  source = "github.com/www-aiqu-no/terraform-vsphere-linux-vm.git?ref=v0.0.3"
 # ------------------------------------------------------------------------------
   hosts  = ["my-vsphere-host"]
 # ------------------------------------------------------------------------------
@@ -11,11 +10,11 @@ module "linux_vm" {
   vsphere_folder    = "vsphere-folder-name"
 # ------------------------------------------------------------------------------
   name     = "vm-name-prefix"
-  template = "vm-template"
+  template = "windows-template"
 # ------------------------------------------------------------------------------
   #cpu     = 2
-  #ram_mb  = 4096
-  #disk_gb = 60
+  #ram_mb  = 2048
+  #disk_gb = 20
 # ------------------------------------------------------------------------------
   #ipv4_address_start = "10"
   #ipv4_network       = "10.0.250.0/24"
@@ -28,5 +27,4 @@ module "linux_vm" {
   #  "${data.vsphere_custom_attribute.first.id}"  = "somevalue"
   #  "${data.vsphere_custom_attribute.second.id}" = "somevalue"
   #}
-# ------------------------------------------------------------------------------
 }
